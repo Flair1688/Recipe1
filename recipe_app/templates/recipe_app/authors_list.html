@@ -1,0 +1,55 @@
+{% extends 'recipe_app/base.html' %}
+
+{% block content %}
+
+
+  {% for avatar in authors %}
+
+
+      <div class="album py-5 bg-light" style="margin-top: 8%">
+        <div class="container ">
+          <div class="row ">
+      <hr class="featurette-divider">
+        <div class="container marketing">
+          <div class="row featurette">
+            <div class="col-md-8 order-md-2">
+              <a href="#" class="lead"><h2 class="featurette-heading">{{ avatar.user }}</h2></a>
+            </div>
+          <div class="col-md-3 order-md-1">
+            <img  src="/media/{{ avatar.image }}" style="height: 220px; width: 240px"  alt="Generic placeholder image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+        <!-- /END THE FEATURETTES -->
+
+      </div><!-- /.container -->
+
+{% endfor %}
+<!--<div class="pagination container">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">&#171;</a>
+            <a href="?page=1">1</a>
+            <span href="?page={{ page_obj.number }}">{{ page_obj.number }}</span>
+
+        {% endif %}
+
+        {% if page_obj.number > 1 %}
+        <span class="current">
+                    . . .
+         </span>
+        {% endif %}
+
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+            <a href="?page={{ page_obj.next_page_number }}">&#187;</a>
+        {% endif %}
+    </span>
+</div>-->
+{% endblock content %}
