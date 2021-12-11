@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 class Avatar(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=False, verbose_name="Автор")
     image = models.ImageField(blank=True, upload_to='avatar/%Y/%m/%d', verbose_name='Аватарка')
@@ -11,6 +10,11 @@ class Avatar(models.Model):
         return self.user.username
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
 
 
 class Category(models.Model):
@@ -19,12 +23,139 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Cereal(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class NutsDriedFruit(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Flour(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
+class Other(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Категория блюда')
+
+    def __str__(self):
+        return self.name
+
+
 class Ingredient(models.Model):
     ingredient_title = models.CharField(max_length=30)
 
+
     def __str__(self):
         return self.ingredient_title
-
 
 
 class Recipe(models.Model):
@@ -40,16 +171,10 @@ class Recipe(models.Model):
     cooking = models.TextField(blank=False, verbose_name="Инструкция по приготовлению")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=False, verbose_name="Категория блюда")
 
-
-
-
-
     def __str__(self):
         return self.title
 
-
-
-class Meta:
-    verbose_name = "Рецепты"
-    verbose_name_plural = "Рецепты"
+    class Meta:
+        verbose_name = "Рецепты"
+        verbose_name_plural = "Рецепты"
 

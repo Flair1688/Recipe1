@@ -3,7 +3,6 @@
 {% extends 'recipe_app/base.html' %}
 
 {% block content %}
-<div class="bgcolor">
 <main role="main">
       <section class="jumbotron text-center">
         <div class="row">
@@ -18,40 +17,95 @@
           </div>
       </section>
     </main>
+<style>
+
+  </style>
 
 
- <form action="{% url 'filter' %}" method="get">
-    <div class="left-side my-4">
-        <h3 class="sear-head editContent">Ингредиенты</h3>
-        <ul class="w3layouts-box-list">
+
+<form class="container" action="{% url 'filter' %}" method="get" >
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+    Кнопка выпадающего списка
+  </button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+    Кнопка выпадающего списка
+  </button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+    Кнопка выпадающего списка
+  </button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse"  data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Кнопка выпадающего списка
+  </button>
+    <article >
+    <figure class="left-side my-4 figure">
+        <div class="collapse" id="collapseExample1">
+              <div class="card card-body" style="text-align: left">
             {% for ingredient in view.get_ingredient %}
-            <li class="editContent">
+            <label class="editContent">
                 <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
                 <span class="span editContent">{{ ingredient.ingredient_title }}</span>
-            </li>
+            </label>
             {% endfor %}
-        </ul>
-    </div>
-     <div class="left-side">
-        <h3 class="sear-head editContent">Категория блюда</h3>
-        <ul class="w3layouts-box-list">
-            {% for category in view.get_category %}
-                <li class="editContent">
-                    <input type="checkbox" class="checked" name="category" value="{{ category.id }}">
-                    <span class="span editContent">{{ category.name }}</span>
-                </li>
+              </div>
+        </div>
+    </figure>
+         <figure class="left-side my-4 figure">
+        <div class="collapse" id="collapseExample3">
+              <div style="text-align: left; width: 500px">
+            {% for ingredient in view.get_ingredient %}
+            <label class="editContent">
+                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
+                <span class="span editContent">{{ ingredient.ingredient_title }}</span>
+            </label>
             {% endfor %}
-        </ul>
-    </div>
+              </div>
+        </div>
+    </figure>
+         <figure class="left-side my-4 figure">
+
+        <div class="collapse" id="collapseExample4">
+              <div class="card card-body" style="text-align: left">
+            {% for ingredient in view.get_ingredient %}
+            <label class="editContent">
+                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
+                <span class="span editContent">{{ ingredient.ingredient_title }}</span>
+            </label>
+            {% endfor %}
+              </div>
+        </div>
+    </figure>
+        <figure class="left-side my-4 figure">
+        <div class="collapse" id="collapseExample">
+              <div class="card card-body" style="text-align: left">
+            {% for ingredient in view.get_ingredient %}
+            <label class="editContent">
+                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
+                <span class="span editContent">{{ ingredient.ingredient_title }}</span>
+            </label>
+            {% endfor %}
+              </div>
+        </div>
+    </figure>
+<!--     <figure class="left-side">-->
+<!--        <h3 class="sear-head editContent">Категория блюда</h3>-->
+<!--        <div class="w3layouts-box-list">-->
+<!--            {% for category in view.get_category %}-->
+<!--                <lable class="editContent">-->
+<!--                    <input type="checkbox" class="checked" name="category" value="{{ category.id }}">-->
+<!--                    <span class="span editContent">{{ category.name }}</span>-->
+<!--                </lable>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </figure>-->
+        </article>
     <button type="submit">Найти</button>
-</form>
-</div>
+    </form>
 
-
+<div  style="margin-top: 15%"></div>
   {% for recipe in object_list %}
 
 
-      <div class="album py-5 bg-light ">
+      <div class="album py-5 bg-light">
         <div class="container ">
           <div class="row ">
       <hr class="featurette-divider">
@@ -68,12 +122,18 @@
       </div>
     </div>
   </div>
+<!--<div class="media text-muted pt-3">-->
+<!--          <img data-src="/media/{{ recipe.image }}" alt=""  class="mr-2 rounded">-->
+<!--          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">-->
+<!--            <strong class="d-block text-gray-dark">@username</strong>-->
+<!--                <p class="clip"> {{ recipe.description }} </p>-->
+<!--          </p>-->
+<!--        </div>-->
 
 
+<!--        &lt;!&ndash; /END THE FEATURETTES &ndash;&gt;-->
 
-        <!-- /END THE FEATURETTES -->
-
-      </div><!-- /.container -->
+<!--      </div>&lt;!&ndash; /.container &ndash;&gt;-->
 
 {% endfor %}
 <!--<div class="pagination container">

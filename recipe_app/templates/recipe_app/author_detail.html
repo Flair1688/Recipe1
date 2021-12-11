@@ -1,8 +1,24 @@
-<!-- templates/post_detail.html -->
-
 {% extends 'recipe_app/base.html' %}
 
 {% block content %}
+<div class="bgcolor">
+<main role="main">
+      <section class="jumbotron text-center">
+        <div class="row">
+        <div class="container">
+          <h1 id="background_text" class="jumbotron-heading">&ensp;&ensp;&ensp; &ensp;Chef&ensp;&ensp;Rye&emsp;</h1>
+          <!--<p class="lead text-muted">it entirely.</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Main call to action</a>
+            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          </p>-->
+            </div>
+          </div>
+      </section>
+    </main>
+
+
+
   {% for recipe in object_list %}
 
 
@@ -31,5 +47,26 @@
       </div><!-- /.container -->
 
 {% endfor %}
+<!--<div class="pagination container">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">&#171;</a>
+            <a href="?page=1">1</a>
+            <span href="?page={{ page_obj.number }}">{{ page_obj.number }}</span>
 
+        {% endif %}
+
+        {% if page_obj.number > 1 %}
+        <span class="current">
+                    . . .
+         </span>
+        {% endif %}
+
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+            <a href="?page={{ page_obj.next_page_number }}">&#187;</a>
+        {% endif %}
+    </span>
+</div>-->
 {% endblock content %}

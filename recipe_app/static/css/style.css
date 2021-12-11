@@ -11,6 +11,9 @@
     height: 700px;
     width: 720px;
 }
+.menu-btn.active ~ #dropdown-menu {
+    display: block !important;
+}
 .video{
 }
 .video_item{
@@ -59,3 +62,14 @@ p.dline {
     margin-left: 17%;
 }
 
+.figure {
+    padding: 10px; /* Поля вокруг */
+    display: block; /* Блочный элемент */
+    width: 350px; /* Ширина */
+    float: left; /* Блоки выстраиваются по горизонтали */
+    margin: 0 10px 10px 0; /* Отступы */
+    text-align: center; /* Выравнивание по центру */
+   }
+.figcaption {
+    color: #fff; /* Цвет текста */
+   }

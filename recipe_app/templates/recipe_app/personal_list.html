@@ -29,7 +29,10 @@
     <a href="{% url 'register' %}">Login</a>
 {% endif %}
         <a id="add-link" href="{% url 'recipe-create' %}">Создать</a>
+</div>
+<h2 >{{user}}</h2>
 
+<img  src="/media/{{ avatar }}" style="height: 220px; width: 240px"  alt="Generic placeholder image">
   {% for recipe in recipes %}
 
         {% if recipe.title %}

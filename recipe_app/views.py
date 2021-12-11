@@ -1,3 +1,4 @@
+import form as form
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,8 +15,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Recipe, Ingredient, Category, Avatar
 from .forms import AddRecipeForm
 
+
 class IngredientCategory:
     # Фильтер по инградиентам и категории блюда
+
     def get_ingredient(self):
         return Ingredient.objects.all()
 
@@ -24,8 +27,6 @@ class IngredientCategory:
 
     def get_user(self):
         return Avatar.objects.all()
-
-
 
 
 class RecipeList(IngredientCategory, ListView):
@@ -41,8 +42,11 @@ class PersonalAreaList(IngredientCategory, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['recipes'] = context['recipes'].filter(user=self.request.user)
+        # ava = Avatar.objects.filter(user=self.request.user).first()
+        # context['avatar'] = ava.image
 
         return context
+
 
 class AuthorsList(IngredientCategory, ListView):
     model = Avatar
@@ -50,10 +54,10 @@ class AuthorsList(IngredientCategory, ListView):
     template_name = 'recipe_app/authors_list.html'
 
 
-
 class RecipeDetailView(IngredientCategory, DetailView):
     model = Recipe
     template_name = 'recipe_app/recipe_detail.html'
+
 
 class AuthorDetailView(IngredientCategory, ListView):
     model = Recipe
@@ -68,10 +72,8 @@ class AuthorDetailView(IngredientCategory, ListView):
         return render(request, 'author_detail.html', context)
 
 
-
 class Search(IngredientCategory, ListView):
     context_object_name = 'search'
-
 
     # paginate_by = 7 #кол-во выводимых записей
     def get_queryset(self):
@@ -87,6 +89,7 @@ class Search(IngredientCategory, ListView):
 
         return context
 
+
 class FilterRecipeView(IngredientCategory, ListView):
     # Фильтер рецептов
     def get_queryset(self):
@@ -96,6 +99,7 @@ class FilterRecipeView(IngredientCategory, ListView):
         ).distinct()
         return queryset
 
+
 class CustomLoginView(IngredientCategory, LoginView):
     template_name = 'recipe_app/login.html'
     fields = '__all__'
@@ -103,6 +107,7 @@ class CustomLoginView(IngredientCategory, LoginView):
 
     def get_success_url(self):
         return reverse_lazy('personal_list')
+
 
 class RegisterPage(IngredientCategory, FormView):
     template_name = 'recipe_app/register.html'
@@ -139,6 +144,7 @@ class RecipeUpdate(LoginRequiredMixin, UpdateView):
     model = Recipe
     fields = ['title', 'description', 'video', 'image', 'number', 'ingredient', 'gram', 'cooking', 'category']
     success_url = reverse_lazy('personal_list')
+
 
 class RecipeDelete(LoginRequiredMixin, DeleteView):
     model = Recipe
