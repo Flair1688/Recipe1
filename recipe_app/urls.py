@@ -1,9 +1,7 @@
-from django.conf.urls import url
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
 from . import views
 
 
@@ -12,7 +10,7 @@ urlpatterns = [
     path('', views.RecipeList.as_view(), name='recipes'),
     path('personal_list/', views.PersonalAreaList.as_view(), name='personal_list'),
     path('authors_list/', views.AuthorsList.as_view(), name='authors_list'),
-    path('author/<int:pk>/', views.AuthorDetailView.as_view(), name='author_detail'),
+    path('author/<int:pk>/', views.author_recipes, name='author_detail'),
 
     path('filter/', views.FilterRecipeView.as_view(), name='filter'),
     path('search/', views.Search.as_view(), name='search'),

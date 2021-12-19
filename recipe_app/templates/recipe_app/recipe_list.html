@@ -3,105 +3,136 @@
 {% extends 'recipe_app/base.html' %}
 
 {% block content %}
-<main role="main">
-      <section class="jumbotron text-center">
-        <div class="row">
-        <div class="container">
-          <h1 id="background_text" class="jumbotron-heading">&ensp;&ensp;&ensp; &ensp;Chef&ensp;&ensp;Rye&emsp;</h1>
-          <!--<p class="lead text-muted">it entirely.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>-->
-            </div>
-          </div>
-      </section>
-    </main>
-<style>
 
-  </style>
+<div style="margin-top:100px"></div>
+<div class="container">
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
 
 
 
-<form class="container" action="{% url 'filter' %}" method="get" >
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-    Кнопка выпадающего списка
-  </button>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-    Кнопка выпадающего списка
-  </button>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
-    Кнопка выпадающего списка
-  </button>
-    <button class="btn btn-primary" type="button" data-toggle="collapse"  data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Кнопка выпадающего списка
-  </button>
-    <article >
-    <figure class="left-side my-4 figure">
-        <div class="collapse" id="collapseExample1">
-              <div class="card card-body" style="text-align: left">
+
+
+
+<form action="{% url 'filter' %}" method="get">
+<div class="tab-content" id="pills-tabContent">
+
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <h3 class="sear-head editContent" style="text-align: center">Ингредиенты</h3>
+        <ul class="w3layouts-box-list">
             {% for ingredient in view.get_ingredient %}
-            <label class="editContent">
+            <ul class="editContent">
                 <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
                 <span class="span editContent">{{ ingredient.ingredient_title }}</span>
-            </label>
+            </ul>
             {% endfor %}
-              </div>
-        </div>
-    </figure>
-         <figure class="left-side my-4 figure">
-        <div class="collapse" id="collapseExample3">
-              <div style="text-align: left; width: 500px">
-            {% for ingredient in view.get_ingredient %}
-            <label class="editContent">
-                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
-                <span class="span editContent">{{ ingredient.ingredient_title }}</span>
-            </label>
+        </ul>
+    </div>
+<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <h3 class="sear-head editContent">1</h3>
+        <ul class="w3layouts-box-list">
+            {% for meat in view.get_meat %}
+            <li class="editContent">
+                <input type="checkbox" class="checked" name="ingredient" value="{{ meat.id }}">
+                <span class="span editContent">{{ meat.name }}</span>
+            </li>
             {% endfor %}
-              </div>
-        </div>
-    </figure>
-         <figure class="left-side my-4 figure">
+        </ul>
+    </div>
+    </div>
+    <button type="submit">Найти</button>
+</form>
+</div>
 
-        <div class="collapse" id="collapseExample4">
-              <div class="card card-body" style="text-align: left">
-            {% for ingredient in view.get_ingredient %}
-            <label class="editContent">
-                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
-                <span class="span editContent">{{ ingredient.ingredient_title }}</span>
-            </label>
-            {% endfor %}
-              </div>
-        </div>
-    </figure>
-        <figure class="left-side my-4 figure">
-        <div class="collapse" id="collapseExample">
-              <div class="card card-body" style="text-align: left">
-            {% for ingredient in view.get_ingredient %}
-            <label class="editContent">
-                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">
-                <span class="span editContent">{{ ingredient.ingredient_title }}</span>
-            </label>
-            {% endfor %}
-              </div>
-        </div>
-    </figure>
-<!--     <figure class="left-side">-->
-<!--        <h3 class="sear-head editContent">Категория блюда</h3>-->
-<!--        <div class="w3layouts-box-list">-->
-<!--            {% for category in view.get_category %}-->
-<!--                <lable class="editContent">-->
-<!--                    <input type="checkbox" class="checked" name="category" value="{{ category.id }}">-->
-<!--                    <span class="span editContent">{{ category.name }}</span>-->
-<!--                </lable>-->
+<!--<form class="container" action="{% url 'filter' %}" method="get" >-->
+<!--    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">-->
+<!--    Кнопка выпадающего списка-->
+<!--  </button>-->
+<!--    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">-->
+<!--    Кнопка выпадающего списка-->
+<!--  </button>-->
+<!--    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">-->
+<!--    Кнопка выпадающего списка-->
+<!--  </button>-->
+<!--    <button class="btn btn-primary" type="button" data-toggle="collapse"  data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">-->
+<!--    Кнопка выпадающего списка-->
+<!--  </button>-->
+
+<!--    <article >-->
+<!--    <figure class="left-side my-4 figure">-->
+<!--        <div class="collapse" id="collapseExample1">-->
+<!--              <div class="card card-body" style="text-align: left">-->
+<!--            {% for ingredient in view.get_ingredient %}-->
+<!--            <label class="editContent">-->
+<!--                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">-->
+<!--                <span class="span editContent">{{ ingredient.ingredient_title }}</span>-->
+<!--            </label>-->
 <!--            {% endfor %}-->
+<!--              </div>-->
 <!--        </div>-->
 <!--    </figure>-->
-        </article>
-    <button type="submit">Найти</button>
-    </form>
+<!--         <figure class="left-side my-4 figure">-->
+<!--        <div class="collapse" id="collapseExample3">-->
+<!--              <div style="text-align: left; width: 500px">-->
+<!--            {% for meat in view.get_meat %}-->
+<!--            <label class="editContent">-->
+<!--                <input type="checkbox" class="checked" name="ingredient" value="{{ meat.id }}">-->
+<!--                <span class="span editContent">{{ meat.name }}</span>-->
+<!--            </label>-->
+<!--            {% endfor %}-->
+<!--              </div>-->
+<!--        </div>-->
+<!--    </figure>-->
+<!--         <figure class="left-side my-4 figure">-->
 
-<div  style="margin-top: 15%"></div>
+<!--        <div class="collapse" id="collapseExample4">-->
+<!--              <div class="card card-body" style="text-align: left">-->
+<!--            {% for ingredient in view.get_ingredient %}-->
+<!--            <label class="editContent">-->
+<!--                <input type="checkbox" class="checked" name="ingredient" value="{{ ingredient.id }}">-->
+<!--                <span class="span editContent">{{ ingredient.ingredient_title }}</span>-->
+<!--            </label>-->
+<!--            {% endfor %}-->
+<!--              </div>-->
+<!--        </div>-->
+<!--    </figure>-->
+<!--        <figure class="left-side my-4 figure">-->
+<!--        <div class="collapse" id="collapseExample">-->
+<!--              <div class="card card-body" style="text-align: left">-->
+<!--            {% for vegetable in view.get_vegetable %}-->
+<!--            <label class="editContent">-->
+<!--                <input type="checkbox" class="checked" name="ingredient" value="{{ vegetable.id }}">-->
+<!--                <span class="span editContent">{{ vegetable.name }}</span>-->
+<!--            </label>-->
+<!--            {% endfor %}-->
+<!--              </div>-->
+<!--        </div>-->
+<!--    </figure>-->
+<!--&lt;!&ndash;     <figure class="left-side">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h3 class="sear-head editContent">Категория блюда</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="w3layouts-box-list">&ndash;&gt;-->
+<!--&lt;!&ndash;            {% for category in view.get_category %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <lable class="editContent">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="checkbox" class="checked" name="category" value="{{ category.id }}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="span editContent">{{ category.name }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </lable>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </figure>&ndash;&gt;-->
+<!--        </article>-->
+<!--    <button type="submit">Найти</button>-->
+<!--    </form>-->
+
+<!--<div  style="margin-top: 15%"></div>-->
   {% for recipe in object_list %}
 
 
@@ -112,7 +143,8 @@
         <div class="container marketing">
           <div class="row featurette">
             <div class="col-md-8 order-md-2">
-              <a href="{% url 'recipe_detail' recipe.pk %}" class="lead"><h2 class="featurette-heading">{{ recipe.title }}</h2></a>
+              <a href="{% url 'recipe_detail' recipe.pk %}" class="lead"><h2 class="featurette-heading">{{ recipe.title|upper }}</h2></a>
+                <p> {{ recipe.create }} </p>
                 <p class="clip"> {{ recipe.description }} </p>
             </div>
           <div class="col-md-3 order-md-1">
@@ -122,6 +154,7 @@
       </div>
     </div>
   </div>
+</div>
 <!--<div class="media text-muted pt-3">-->
 <!--          <img data-src="/media/{{ recipe.image }}" alt=""  class="mr-2 rounded">-->
 <!--          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">-->
@@ -136,26 +169,47 @@
 <!--      </div>&lt;!&ndash; /.container &ndash;&gt;-->
 
 {% endfor %}
-<!--<div class="pagination container">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">&#171;</a>
-            <a href="?page=1">1</a>
-            <span href="?page={{ page_obj.number }}">{{ page_obj.number }}</span>
+<div class="container">
 
-        {% endif %}
+<nav aria-label="recipe_list.html">
+  <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+    <li class="page-item disabled">
+      <li class="page-link">
+      <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
 
-        {% if page_obj.number > 1 %}
-        <span class="current">
-                    . . .
-         </span>
-        {% endif %}
+      {% endif %}
+      {% if page_obj.has_previous %}
+<!--      <li class="page-item disabled">-->
+<!--      <span class="page-link">-->
+<!--        {{ page_obj.previous_page_number }}-->
+<!--        <span class="sr-only">(current)</span>-->
+<!--      </span>-->
+<!--    </li>-->
+      {% endif %}
+    <li class="page-item active">
+      <span class="page-link">
+        {{ page_obj.number }}
+        <span class="sr-only">(current)</span>
+      </span>
+<!--    </li>-->
+<!--        <li class="page-item disabled">-->
+<!--      <span class="page-link">-->
+<!--        {{ page_obj.number }}-->
+<!--        <span class="sr-only">(current)</span>-->
+<!--      </span>-->
+<!--    </li>-->
+      {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+    <li class="page-link">
+      <a  href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+    </li>
+      {% endif %}
+  </ul>
+
+</nav>
+    </div>
 
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-            <a href="?page={{ page_obj.next_page_number }}">&#187;</a>
-        {% endif %}
-    </span>
-</div>-->
 {% endblock content %}

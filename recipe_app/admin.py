@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipe, Ingredient, Category, Avatar
+from .models import Recipe, Ingredient, Category, Avatar, Meat, Vegetable
 from django.forms import CheckboxSelectMultiple
 from django.db import models
 
@@ -13,6 +13,8 @@ class IngredientAdmin(admin.ModelAdmin):
 
 admin.site.register(Recipe, IngredientAdmin)
 admin.site.register(Ingredient)
+admin.site.register(Meat)
+admin.site.register(Vegetable)
 admin.site.register(Category)
 admin.site.register(Avatar)
 
