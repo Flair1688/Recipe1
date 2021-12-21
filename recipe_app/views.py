@@ -1,8 +1,6 @@
-import form as form
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.db.models import Q
 from django.shortcuts import redirect, render
@@ -16,29 +14,20 @@ from .models import *
 from .forms import AddRecipeForm
 
 
-
 class IngredientCategory:
     # Фильтер по инградиентам и категории блюда
 
     def get_ingredient(self):
         return Ingredient.objects.all()
 
-    def get_meat(self):
-        return Meat.objects.all()
-
-    def get_vegetable(self):
-        return Vegetable.objects.all()
-
     def get_category(self):
         return Category.objects.all()
 
-    def get_user(self):
-        return Avatar.objects.all()
 
 
 class RecipeList(IngredientCategory, ListView):
     model = Recipe
-    paginate_by = 1
+    paginate_by = 5
     filter_backends = (DjangoFilterBackend,)
 
 
@@ -56,38 +45,12 @@ class PersonalAreaList(ListView):
         return context
 
 
-class AuthorsList(IngredientCategory, ListView):
-    model = Avatar
-    context_object_name = 'authors'
-    template_name = 'recipe_app/authors_list.html'
-
-
 class RecipeDetailView(IngredientCategory, DetailView):
     model = Recipe
     template_name = 'recipe_app/recipe_detail.html'
 
 
-# class AuthorListView(ListView):
-#     model = Recipe
-#     context_object_name = 'author'
-#     template_name = 'recipe_app/author_detail.html'
-#
-#     def get_queryset(self):
-#         # original qs
-#         qs = super().get_queryset()
-#         # filter by a variable captured from url, for example
-#         return qs.filter(user=self.kwargs.pk)
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['author'] = Recipe.objects.filter(user=self.request.user)
-    #     # ava = Avatar.objects.filter(user=self.request.user).first()
-    #     # context['avatar'] = ava.image
-    #
-    #     return context
-def author_recipes(request, pk):
-    user = Recipe.objects.filter(user=pk)
-    return render(request, 'recipe_app/author_detail.html', context={'user': user})
 
 class Search(IngredientCategory, ListView):
     context_object_name = 'search'

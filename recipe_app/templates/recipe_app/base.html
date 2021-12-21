@@ -74,7 +74,7 @@
                <a href="{% url 'logout' %}"><img src="/static/media/images/icons8-exit-32.png"></a>
            {% else %}
           <button class="btn btn-outline-primary btn-circle"><a href="{% url 'login' %}">Вход</a></button>
-          <button class="btn btn-outline-primary btn-circle"><a href="{% url 'personal_list' %}">Регистрация</a></button>
+          <button class="btn btn-outline-primary btn-circle"><a href="{% url 'register' %}">Регистрация</a></button>
            {% endif %}
 
       </div>
@@ -87,7 +87,7 @@
 
 
 {% endblock content %}
-
+<div style="margin-top: 3%"> </div>
  <footer style="position:fixed; bottom:0; width: 100%"   class="text-muted bgcolor1">
       <div class="container ">
         <p class="float-right">
