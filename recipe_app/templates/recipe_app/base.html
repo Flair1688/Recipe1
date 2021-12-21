@@ -8,17 +8,26 @@
   <!-- Настройка viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chef Rey</title>
-   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <!-- Bootstrap CSS (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- jQuery (Cloudflare CDN) -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- jQuery (Cloudflare CDN) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Bootstrap Bundle JS (Cloudflare CDN) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="{% static 'js/script.css' %}" > </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+<style>
+/* CSS */
+.btn-circle {
+    margin-right: 8px;
+    border-radius: 12px;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
 
+}
+</style>
 </head>
 
  <body>
@@ -50,14 +59,12 @@
 
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'authors_list' %}">Авторы <span class="sr-only">(current)</span></a>
-          </li>
+
         </ul>
 
 
        <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get" >
-          <input class="form-control mr-sm-2" type="text" placeholder="Что вы ищите?" name="q" style="width: 300px; " aria-label="Search">
+          <input class="form-control mr-sm-2" type="text" placeholder="Что вы ищите?" name="q" style="width: 270px; " aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
            <div style="margin-left: 40px">
                 </div>
@@ -66,8 +73,8 @@
             <a href="{% url 'personal_list' %}" style="margin-right: 10px"><img src="/static/media/images/premium-icon-user-3839646.png"></a>
                <a href="{% url 'logout' %}"><img src="/static/media/images/icons8-exit-32.png"></a>
            {% else %}
-        <button><a href="{% url 'login' %}">Вход</a></button>
-          <button><a href="{% url 'personal_list' %}">Регистрация</a></button>
+          <button class="btn btn-outline-primary btn-circle"><a href="{% url 'login' %}">Вход</a></button>
+          <button class="btn btn-outline-primary btn-circle"><a href="{% url 'personal_list' %}">Регистрация</a></button>
            {% endif %}
 
       </div>
@@ -81,14 +88,12 @@
 
 {% endblock content %}
 
-
- <footer  class="text-muted bgcolor1">
+ <footer style="position:fixed; bottom:0; width: 100%"   class="text-muted bgcolor1">
       <div class="container ">
         <p class="float-right">
           <a href="#">Вернуться в начало</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p>&nbsp;</p>
       </div>
     </footer>
 

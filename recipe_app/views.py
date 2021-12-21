@@ -42,7 +42,7 @@ class RecipeList(IngredientCategory, ListView):
     filter_backends = (DjangoFilterBackend,)
 
 
-class PersonalAreaList(IngredientCategory, ListView):
+class PersonalAreaList(ListView):
     model = Recipe
     context_object_name = 'recipes'
     template_name = 'recipe_app/personal_list.html'
@@ -86,9 +86,8 @@ class RecipeDetailView(IngredientCategory, DetailView):
     #
     #     return context
 def author_recipes(request, pk):
-    author = Recipe.objects.filter(user=pk)
-    return render(request, 'recipe_app/author_detail.html', {author:'author'})
-
+    user = Recipe.objects.filter(user=pk)
+    return render(request, 'recipe_app/author_detail.html', context={'user': user})
 
 class Search(IngredientCategory, ListView):
     context_object_name = 'search'
@@ -149,6 +148,7 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = AddRecipeForm
     template_name = 'recipe_app/recipe_form.html'
+    context_object_name = 'create'
 
     def form_valid(self, form):
         form.instance.user = self.request.user

@@ -181,6 +181,7 @@ class Recipe(models.Model):
     cooking = models.TextField(blank=False, verbose_name="Инструкция по приготовлению")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=False, verbose_name="Категория блюда")
 
+
     def __str__(self):
         return self.title
 

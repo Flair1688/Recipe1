@@ -1,18 +1,21 @@
 {% extends 'recipe_app/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 
-<div class="header-bar">
+<div class="header-bar container">
     <h1>Login</h1>
 </div>
 
-<div class="card-body">
+<div class="card-body container">
 <form method="POST">
     {% csrf_token %}
-{{ form.username }}
-{{ form.username.errors }}
-
-{{ form.password }}
-{{ form.password.errors }}    <input class="button" type="submit" value="Login">
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+    {{ form|crispy }}
+      </div>
+    </div>
+    <input class="button" type="submit" value="Login">
 </form>
     <p>Don't have an account? <a href="{% url 'register' %}">Register</a>
 </div>

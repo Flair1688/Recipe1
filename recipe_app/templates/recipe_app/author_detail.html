@@ -1,12 +1,26 @@
-{% extends 'recipe_app/base.html' %}
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>text-overflow</title>
+  <style>
+   .clip {
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    height: 5px;
+    text-overflow: clip; /* Добавляем многоточие */
+   }
+  </style>
+ </head>
+ <body>
+  <p class="clip">Магнитное поле ничтожно гасит большой круг небесной сферы,
+  в таком случае эксцентриситеты и наклоны орбит возрастаюуыдпвамифыови
+ds;kvns;dv
+      dsdl;knvlksmdv
+      sdk;nvksmdv
+      snldnvmsd
+      nlsndc,d
+      nsdndva,
+      'lkbidnvpn
 
-{% block content %}
-
-  {% for recipe in recipes %}
-
-<h3>{{ recipe.title }}</h3>
-    <p>{{ recipe.description }}</p>
-
-{% endfor %}
-
-{% endblock content %}
+      мсмфыргщвмситфцрвсщлфцтывщшфытщшсрфщшывощгжфрышмщрфщуывмрщрфуывшмрщфумрэщрфтуыэшмрфуэкшримщгэфуцкрмщгофукрмрт.</p>
+ </body>
+</html>

@@ -28,7 +28,7 @@
           <div class="row featurette">
             <div class="col-md-8 order-md-2">
               <a href="{% url 'recipe_detail' recipe.pk %}" class="lead"><h2 class="featurette-heading">{{ recipe.title }}</h2></a>
-                <p> {{ recipe.create }} </p>
+                <p > {{ recipe.create }} </p>
                 <p class="clip"> {{ recipe.description }} </p>
             </div>
           <div class="col-md-3 order-md-1">
@@ -45,6 +45,7 @@
         </div>
 
 {% endfor %}
-</div>
-</div>
+</div></div></div>
+
+
 {% endblock content %}
