@@ -13,9 +13,9 @@
               <p class="lead"><h2 class="featurette-heading" style="margin-top: 5%;">{{ recipe.title }}</h2></p>
                 <p style="color: grey; font-size: 80%"> {{recipe.create }} </p>
                 <p style="color: grey; font-size: 80%"> {{recipe.category }} </p>
-                <a  style="color: grey; font-size: 80%"> {{ recipe.user }} </a>
+                <a  style="color: grey; font-size: 80%">Автор: {{ recipe.user }} </a>
                 <p>Количество порций: {{recipe.number}}</p>
-                <p> {{ recipe.description }} </p>
+                <p > {{ recipe.description }} </p>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                 </div>
             {% endif %}
             <div class="col-md-8 order-md-2">
-             <p style="white-space: pre-wrap; margin-top: 8%;"> {{ recipe.cooking }} </p>
+             <p style="white-space: pre-wrap; margin-top: 8%; "> {{ recipe.cooking }} </p>
             </div>
         </div>
 

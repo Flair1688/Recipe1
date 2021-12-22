@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="header-bar container">
-    <h1>Login</h1>
+    <h1>Логин</h1>
 </div>
 
 <div class="card-body container">
@@ -15,9 +15,9 @@
     {{ form|crispy }}
       </div>
     </div>
-    <input class="button" type="submit" value="Login">
+    <input class="button" type="submit" value="Войти">
 </form>
-    <p>Don't have an account? <a href="{% url 'register' %}">Register</a>
+    <p>У вас нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a>
 </div>
 
     {% endblock content %}

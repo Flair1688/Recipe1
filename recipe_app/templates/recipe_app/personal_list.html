@@ -40,7 +40,7 @@
         <a href="{% url 'recipe-update' recipe.id %}">Обновить</a>
         <a class="delete-link" href="{% url 'recipe-delete' recipe.id %}">Удалить</a>
         {% empty %}
-        <h3>No items in list</h3>
+        <h3>У вас нет рецептов</h3>
         </div>
 
 {% endfor %}

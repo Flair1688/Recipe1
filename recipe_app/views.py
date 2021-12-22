@@ -1,3 +1,5 @@
+from urllib import request
+
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -24,10 +26,9 @@ class IngredientCategory:
         return Category.objects.all()
 
 
-
 class RecipeList(IngredientCategory, ListView):
     model = Recipe
-    paginate_by = 5
+    paginate_by = 3
     filter_backends = (DjangoFilterBackend,)
 
 
@@ -39,8 +40,7 @@ class PersonalAreaList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['recipes'] = context['recipes'].filter(user=self.request.user)
-        # ava = Avatar.objects.filter(user=self.request.user).first()
-        # context['avatar'] = ava.image
+
 
         return context
 
@@ -48,8 +48,6 @@ class PersonalAreaList(ListView):
 class RecipeDetailView(IngredientCategory, DetailView):
     model = Recipe
     template_name = 'recipe_app/recipe_detail.html'
-
-
 
 
 class Search(IngredientCategory, ListView):
@@ -73,10 +71,7 @@ class Search(IngredientCategory, ListView):
 class FilterRecipeView(IngredientCategory, ListView):
     # Фильтер рецептов
     def get_queryset(self):
-        queryset = Recipe.objects.filter(
-            Q(ingredient__in=self.request.GET.getlist("ingredient")) |
-            Q(category__in=self.request.GET.getlist("category"))
-        ).distinct()
+        queryset = Recipe.objects.filter(ingredient__in=self.request.GET.getlist("ingredient")).distinct()
         return queryset
 
 
@@ -123,7 +118,7 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
 
 class RecipeUpdate(LoginRequiredMixin, UpdateView):
     model = Recipe
-    fields = ['title', 'description', 'video', 'image', 'number', 'ingredient', 'gram', 'cooking', 'category']
+    form_class = AddRecipeForm
     success_url = reverse_lazy('personal_list')
 
 
